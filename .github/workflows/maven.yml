@@ -1,5 +1,4 @@
- 
-      name: Build Project
+name: Build Project
 
 on:
   push:
@@ -14,11 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build with Maven
-        uses: actions/setup-java@v3
+      - name: Set up Java
+       uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '8'
+          java-version: '8'    # or '11' if your project needs it
           cache: 'maven'
 
       - name: Run Build
