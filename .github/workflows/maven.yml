@@ -1,4 +1,4 @@
-name: Build Project
+   name: Build Project
 
 on:
   push:
@@ -12,11 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Java
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '8'
           distribution: 'temurin'
+
+      - name: Install Maven
+        run: sudo apt-get install -y maven
 
       - name: Build
         run: mvn clean package
