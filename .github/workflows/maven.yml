@@ -1,4 +1,5 @@
-   name: Build Project
+ 
+      name: Build Project
 
 on:
   push:
@@ -10,16 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Set up Java
+      - name: Build with Maven
         uses: actions/setup-java@v3
         with:
-          java-version: '8'
           distribution: 'temurin'
+          java-version: '8'
+          cache: 'maven'
 
-      - name: Install Maven
-        run: sudo apt-get install -y maven
-
-      - name: Build
-        run: mvn clean package
+      - name: Run Build
+        run: mvn -B clean package
